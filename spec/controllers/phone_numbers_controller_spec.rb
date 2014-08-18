@@ -24,6 +24,7 @@ RSpec.describe PhoneNumbersController, :type => :controller do
   # PhoneNumber. As you add validations to PhoneNumber, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
+    { number: 'myPhoneNumber', person_id: 1 }
     skip("Add a hash of attributes valid for your model")
   }
 
