@@ -18,4 +18,8 @@ RSpec.describe Person, :type => :model do
     alice.last_name = nil
     expect(alice).not_to be_valid
   end
+
+  it "has an array of phone numbers" do
+    expect(alice.phone_numbers).to eq([])
+  end
 end
