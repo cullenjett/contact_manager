@@ -118,7 +118,7 @@ RSpec.describe PhoneNumbersController, :type => :controller do
         expect(assigns(:phone_number)).to eq(phone_number)
       end
 
-      it "redirects to the phone_number" do
+      it "redirects to the phone_number's person page" do
         alice = Person.create(first_name: "Alice", last_name: "Smith")
         valid_attributes = { number: "555-1234", person_id: alice.id }
         phone_number = PhoneNumber.create! valid_attributes
