@@ -29,7 +29,7 @@ class EmailAddressesController < ApplicationController
 
   def destroy
     @email_address = EmailAddress.find(params[:id])
-    @email_address.delete
+    @email_address.destroy
     redirect_to @email_address.person
   end
 
