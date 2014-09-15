@@ -21,11 +21,11 @@ require 'rails_helper'
 RSpec.describe PhoneNumbersController, :type => :controller do
 
   let(:valid_attributes) {
-    { number: 'myPhoneNumber', person_id: 1 }
+    { number: 'myPhoneNumber', contact_id: 1, contact_type: 'Person' }
   }
 
   let(:invalid_attributes) {
-    { number: 'no person_id', person_id: nil }
+    { number: 'no contact_id', contact_id: nil , contact_type: 'Not a person'}
   }
 
   let(:valid_session) { {} }
@@ -64,7 +64,7 @@ RSpec.describe PhoneNumbersController, :type => :controller do
   describe "POST create" do
     describe "with valid params" do
       let(:alice) { alice = Person.create(first_name: "Alice", last_name: "Smith") }
-      let(:valid_attributes) { valid_attributes = { number: '1230000', person_id: alice.id} }
+      let(:valid_attributes) { valid_attributes = { number: '1230000', contact_id: alice.id, contact_type: 'Person'} }
 
       it "creates a new PhoneNumber" do
         expect {
@@ -100,7 +100,7 @@ RSpec.describe PhoneNumbersController, :type => :controller do
   describe "PUT update" do
     describe "with valid params" do
       let(:new_attributes) {
-        { number: 'new number', person_id: 1 }
+        { number: 'new number', contact_id: 1, contact_type: 'Person' }
       }
 
       it "updates the requested phone_number" do
@@ -120,7 +120,7 @@ RSpec.describe PhoneNumbersController, :type => :controller do
 
       it "redirects to the phone_number's person page" do
         alice = Person.create(first_name: "Alice", last_name: "Smith")
-        valid_attributes = { number: "555-1234", person_id: alice.id }
+        valid_attributes = { number: "555-1234", contact_id: alice.id, contact_type: 'Person' }
         phone_number = PhoneNumber.create! valid_attributes
         put :update, {:id => phone_number.to_param, :phone_number => valid_attributes}, valid_session
         expect(response).to redirect_to(alice)
