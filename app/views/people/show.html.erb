@@ -13,9 +13,19 @@
 <p><strong>Phone numbers:</strong><p>
 <ul>
   <% @person.phone_numbers.each do |phone| %>
-    <li><%= phone.number %>
-        <%= link_to 'edit', edit_phone_number_path(phone) %>
-        <%= link_to 'delete', phone, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <li>
+      <%= phone.number %>
+      <%= link_to 'edit', edit_phone_number_path(phone) %>
+      <%= link_to 'delete', phone, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+  <% end %>
+</ul>
+
+<p><strong>Email Addresses:</strong><p>
+<ul>
+  <% @person.email_addresses.each do |email_address| %>
+    <li>
+      <%= email_address.address %>
     </li>
   <% end %>
 </ul>
