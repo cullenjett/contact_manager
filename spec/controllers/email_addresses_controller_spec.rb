@@ -19,4 +19,20 @@ RSpec.describe EmailAddressesController, :type => :controller do
       expect(response).to redirect_to alice
     end
   end
+
+  describe "DELETE destroy" do
+    it "deltes the email address" do
+      alice = Person.create(first_name: 'Alice', last_name: 'Smith')
+      email_address = alice.email_addresses.create!(address: 'test@example.com')
+      delete :destroy, { id: email_address.to_param }
+      expect(alice.email_addresses.count).to eq(0)
+    end
+
+    it "redirects to the email address' person page" do
+      alice = Person.create(first_name: 'Alice', last_name: 'Smith')
+      email_address = alice.email_addresses.create!(address: 'test@example.com')
+      delete :destroy, { id: email_address.to_param }
+      expect(response).to redirect_to alice
+    end
+  end
 end

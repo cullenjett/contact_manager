@@ -158,5 +158,4 @@ RSpec.describe PhoneNumbersController, :type => :controller do
       expect(response).to redirect_to(person_url(alice))
     end
   end
-
 end
