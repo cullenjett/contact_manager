@@ -16,6 +16,18 @@
   <% end %>
 </ul>
 
+<p><strong>Email Addresses:</strong><p>
+<ul class="email_addresses">
+  <% @company.email_addresses.each do |email_address| %>
+    <li>
+      <%= email_address.address %>
+      <%= link_to 'edit', edit_email_address_path(email_address) %>
+      <%= link_to 'delete', email_address, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Add email address', new_email_address_path(contact_id: @company.id, contact_type: 'Company') %> |
 <%= link_to 'Add phone number', new_phone_number_path(contact_id: @company.id, contact_type: 'Company') %> |
 <%= link_to 'Edit', edit_person_path(@company) %> |
 <%= link_to 'Back', people_path %>
