@@ -1,0 +1,10 @@
+<p><strong>Phone numbers:</strong><p>
+<ul class="phone_numbers">
+  <% phone_numbers.each do |phone| %>
+    <li>
+      <%= phone.number %>
+      <%= link_to 'edit', edit_phone_number_path(phone) %>
+      <%= link_to 'delete', phone, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+  <% end %>
+</ul>
