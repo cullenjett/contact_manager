@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'thin'
+gem 'haml-rails'
 
 group :development, :test do
   gem 'sqlite3'
